@@ -2,12 +2,75 @@
 <html>
 <style>
     body {background-color: rgb(183, 234, 217);}
-</style>
-<body>
 
+.container {
+    background-color: rgb(88, 88, 88);
+    border: 2px solid rgb(36, 36, 36);
+    box-shadow: 4px 4px  2px rgb(100, 143, 159);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.archetypebox {
+    background-color: rgb(26, 26, 26);
+    height: 200px;
+    border: 3px solid rgb(91, 129, 210);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textinarchetypebox {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+</style>
+
+
+<body>
 é mt trabalho fazer cada coisinha nesse treco bsfg
 
-
-
+<div class="container">
+    <div class="archetypebox">
+        <img src="Flowering.Etoile.the.Melodious.Magnificat.full.4080945.png">
+        <div class = "textinarchetypebox">
+            <h1> Melodious </h1>
+        </div>
+    </div>
+</div>
 </body>
+
+
+<script>
+    container = document.createElement("div");
+    container.classList.add("container");
+    document.body.appendChild(container);
+
+    function archetype(img,name) {
+     var div = document.createElement("div");
+     div.classList.add("archetypebox");
+     divimg = document.createElement("img");
+     divimg.src = img;
+     txt = document.createElement("div");
+     txt.classList.add("textinarchetypebox");
+     actualtxt = document.createElement("h1");
+     actualtxt.innerHTML = name;
+     txt.appendChild(actualtxt);
+     div.appendChild(divimg);
+     div.appendChild(txt);
+    container.appendChild(div)
+    }
+
+    archetype("Flowering.Etoile.the.Melodious.Magnificat.full.4080945.png","Melodious");
+    archetype("Echo 6.5.png","echo")
+</script>
+
+
 </html>
