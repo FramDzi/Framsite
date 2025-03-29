@@ -13,24 +13,34 @@
 }
 
 .archetypebox {
-    background-color: rgb(26, 26, 26);
-    height: 200px;
-    border: 3px solid rgb(91, 129, 210);
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.textinarchetypebox {
+    display: flex;
+    justify-content: center;
+    border: 3px solid rgb(91, 129, 210);
+    width: 250px;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: -1px;
+}
+
+.archetypeimage {
+    height: 250px;
+    width: 250px;
+    background-color: rgb(26, 26, 26);
+    border: 3px solid rgb(91, 129, 210);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.textinarchetypebox {
-    display: flex;
-    justify-content: center;
-}
 
-img {
-    height: 100%;
-    width: 100%;
-}
 </style>
 
 
@@ -39,29 +49,58 @@ apaguei a parte anterior do body agora tá mt mais ez :d
 
 </body>
 
-
+<script src = "archetypes.js"></script>
 <script>
+function zoomIn(name) {
+    a = document.getElementById(name);
+    a.style.border = "20px solid";
+}
+
+function zoomOut(name) {
+    a = document.getElementById(name);
+    a.style.border = "none";
+}
+
     container = document.createElement("div");
     container.classList.add("container");
     document.body.appendChild(container);
 
+    
+    
     function archetype(img,name) {
      var div = document.createElement("div");
      div.classList.add("archetypebox");
+     div.id = name;
+     div.addEventListener("mousemove",() => zoomIn(name));
+     div.addEventListener("mouseout",() => zoomOut(name));
+
      divimg = document.createElement("img");
      divimg.src = img;
+     divimg.classList.add("archetypeimage");
+
      txt = document.createElement("div");
      txt.classList.add("textinarchetypebox");
      actualtxt = document.createElement("h1");
      actualtxt.innerHTML = name;
+
      txt.appendChild(actualtxt);
      div.appendChild(divimg);
      div.appendChild(txt);
     container.appendChild(div)
     }
 
-    archetype("Flowering.Etoile.the.Melodious.Magnificat.full.4080945.png","Melodious");
-    archetype("Echo 6.5.png","echo")
+    for (let k in archetypes) {
+        name = archetypes[k][0];
+        img = name+".png";
+        archetype(img,name);
+    };
+
+
+
+
+
+
+
 </script>
 
 
